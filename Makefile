@@ -4,3 +4,4 @@ build:
 
 .PHONY: run
 run:
+	poetry run python -m trat
