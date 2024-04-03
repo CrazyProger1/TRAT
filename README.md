@@ -4,10 +4,12 @@
   <img src="resources/images/logo.png"  alt="Simple-XSS logo"/>
 </p>
 
-
 <p align="center">
     <a href="https://github.com/CrazyProger1/TRAT/blob/master/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/CrazyProger1/TRAT"></a>
     <a href="https://github.com/CrazyProger1/TRAT/releases/latest"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/CrazyProger1/TRAT"></a>
+</p>
+
+<p align="center">
     <a href="#"><img src="https://img.shields.io/badge/platform-cross-important" alt="Cross-platform" /></a>
     <a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code Style"></a>
     <a href="#"><img src="https://img.shields.io/badge/coverage-99%25-brightgreen" alt="Coverage"/></a>
