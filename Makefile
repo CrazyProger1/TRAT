@@ -10,3 +10,8 @@ run:
 .PHONY: install
 install:
 	poetry install
+
+
+.PHONY: format
+format:
+	poetry run python -m black trat/__main__.py
