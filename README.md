@@ -14,13 +14,13 @@
 </p>
 
 
-TRAT is a powerful cross-platform RAT based on Telegram bot protocol.
+TRAT is a powerful cross-platform RAT based on Telegram-bot protocol.
 
 ## Key-Features
 
 - Cross-platform
-- Modularity allowing endless expansion
--
+- Modularity allowing endless functionality expansion
+- Based on Telegram-bot protocol
 
 ## Disclaimer
 
