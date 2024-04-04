@@ -14,6 +14,7 @@ from ..filters import (
     AdminFilter,
     CommandFilter
 )
+from ...utils import build_filestruct
 
 module_router = aiogram.Router(name='Module Router')
 
@@ -50,7 +51,7 @@ async def try_load(manager: BaseModuleManager, module: str):
 @module_router.message(AdminFilter(), aiogram.F.document)
 async def on_file(message: types.Message, bot: aiogram.Bot, module_manager: BaseModuleManager,
                   dispatcher: aiogram.Dispatcher):
-    os.makedirs(MODULES_DIRECTORY, exist_ok=True)
+    build_filestruct()
 
     filename = message.document.file_name
     savepath = os.path.join(MODULES_DIRECTORY, filename)

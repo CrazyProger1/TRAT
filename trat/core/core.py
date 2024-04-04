@@ -8,12 +8,15 @@ from trat.core.config import (
 )
 from trat.core.modules import include_module_routers
 from trat.core.bot.handlers import routers
+from trat.core.utils import build_filestruct
 from trat.utils.modules import (
     ModuleManager,
 )
 
 
 async def run():
+    build_filestruct()
+
     bot = aiogram.Bot(
         token=TOKEN,
         default=DefaultBotProperties(
