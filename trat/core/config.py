@@ -13,3 +13,8 @@ TOKEN = os.getenv('TOKEN')
 ADMIN = int(os.getenv('ADMIN'))
 PARSE_MODE = 'html'
 COMMAND_PREFIX = '/'
+HELP_MESSAGE = f'''
+<b>{APP} - V{VERSION}</b>
+
+<b> HELP </b>
+'''

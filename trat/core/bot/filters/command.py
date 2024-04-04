@@ -27,6 +27,10 @@ class CommandFilter(filters.Filter):
     def description(self) -> str:
         return self._description
 
+    @property
+    def prefix(self) -> str:
+        return self._prefix
+
     async def __call__(self, *args) -> bool:
         message, *_ = args
 
