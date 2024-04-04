@@ -4,13 +4,10 @@ import zipfile
 import aiogram
 from aiogram import (
     types,
-    filters,
 )
 
-from trat.core.config import (
-    MODULES_DIRECTORY,
-)
-from trat.core.utils import build_filestruct
+from trat.core.config import MODULES_DIRECTORY
+from trat.core.modules import include_module_routers
 from trat.utils.modules import BaseModuleManager
 from .enums import Messages
 from ..filters import (
@@ -51,8 +48,9 @@ async def try_load(manager: BaseModuleManager, module: str):
 
 
 @module_router.message(AdminFilter(), aiogram.F.document)
-async def on_file(message: types.Message, bot: aiogram.Bot, module_manager: BaseModuleManager):
-    build_filestruct()
+async def on_file(message: types.Message, bot: aiogram.Bot, module_manager: BaseModuleManager,
+                  dispatcher: aiogram.Dispatcher):
+    os.makedirs(MODULES_DIRECTORY, exist_ok=True)
 
     filename = message.document.file_name
     savepath = os.path.join(MODULES_DIRECTORY, filename)
@@ -63,13 +61,23 @@ async def on_file(message: types.Message, bot: aiogram.Bot, module_manager: Base
         update = os.path.isdir(dest)
 
         if await try_unpack(file=savepath, destination=dest):
-            if await try_load(manager=module_manager, module=dest):
-                await message.reply(
-                    Messages.MODULE_SUCCESSFULLY_UPDATED
-                    if update else
-                    Messages.MODULE_SUCCESSFULLY_INSTALLED
+            try:
+                module = module_manager.load_module(dest)
+
+                include_module_routers(
+                    dispatcher=dispatcher,
+                    module=module
                 )
-            else:
+
+                await message.reply(
+                    Messages.MODULE_SUCCESSFULLY_UPDATED.format(
+                        version=module.VERSION,
+                        name=module.NAME
+                    )
+                    if update else
+                    Messages.MODULE_SUCCESSFULLY_INSTALLED.format(name=module.NAME)
+                )
+            except ImportError:
                 await message.reply(Messages.ERROR_WHILE_LOADING)
         else:
             await message.reply(Messages.ERROR_WHILE_UNPACKING)
