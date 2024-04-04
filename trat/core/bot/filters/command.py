@@ -1,3 +1,5 @@
+from typing import Iterable
+
 from aiogram import (
     filters,
     types,
@@ -14,10 +16,12 @@ class CommandFilter(filters.Filter):
             *commands: str,
             description: str,
             prefix: str = COMMAND_PREFIX,
+            tag: str = None
     ):
         self._commands = set(commands)
         self._description = description
         self._prefix = prefix
+        self._tag = tag
 
     @property
     def commands(self) -> set[str]:
@@ -30,6 +34,10 @@ class CommandFilter(filters.Filter):
     @property
     def prefix(self) -> str:
         return self._prefix
+
+    @property
+    def tag(self) -> Iterable[str]:
+        return self._tag
 
     async def __call__(self, *args) -> bool:
         message, *_ = args

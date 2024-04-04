@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 import aiogram
 from aiogram import types
 
@@ -18,12 +20,28 @@ command_router = aiogram.Router(name='Command Router')
 @command_router.message(CommandFilter('help', description='show this message'), AdminFilter())
 async def on_help(message: types.Message):
     result = Messages.HELP_MESSAGE
+
+    tags = defaultdict(list)
+
     for fltr in iter_instances(CommandFilter, precise=False):
-        result += (
+        msg = (
             f'> <b>{fltr.prefix}'
             f'{(", " + fltr.prefix).join(fltr.commands)}</b> - '
             f'{fltr.description}\n'
         )
+
+        tag = fltr.tag
+
+        if tag:
+            tags[tag].append(msg)
+        else:
+            result += msg
+
+    for tag, msgs in tags.items():
+        result += f'<b>{tag}\n</b>'
+
+        for msg in msgs:
+            result += msg
 
     await message.reply(result)
 
