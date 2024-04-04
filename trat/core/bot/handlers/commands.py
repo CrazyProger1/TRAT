@@ -32,13 +32,11 @@ async def on_help(message: types.Message):
 
         tag = fltr.tag
 
-        if tag:
-            tags[tag].append(msg)
-        else:
-            result += msg
+        tags[tag].append(msg)
 
     for tag, msgs in tags.items():
-        result += f'<b>{tag}\n</b>'
+        if tag:
+            result += f'<b>{tag}\n</b>'
 
         for msg in msgs:
             result += msg

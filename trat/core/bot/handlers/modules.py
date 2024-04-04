@@ -6,6 +6,7 @@ from aiogram import (
     types,
 )
 
+from trat.core.utils import build_filestruct
 from trat.core.config import MODULES_DIRECTORY
 from trat.core.modules import include_module_routers
 from trat.utils.modules import BaseModuleManager
@@ -14,7 +15,6 @@ from ..filters import (
     AdminFilter,
     CommandFilter
 )
-from ...utils import build_filestruct
 
 module_router = aiogram.Router(name='Module Router')
 

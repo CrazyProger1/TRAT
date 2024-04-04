@@ -62,4 +62,5 @@ async def on_get(message: types.Message):
         return await message.reply('Missing argument: filepath')
 
     file = args[0]
+    print(file)
     await message.reply_document(types.FSInputFile(file))
