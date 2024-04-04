@@ -113,12 +113,18 @@ routers = [  # !important, must be in all user-modules
     AdminFilter(),  # only you can use this command (chatid specified in .env)
     CommandFilter(  # custom command filter
         "my_command",
-        description="My Command Description"
+        description="My Command Description",  # command description, for a help menu
+        tag=__name__,  # tag, for a help menu
+        arguments=("message",),  # arguments of command, for a help menu
     )
 )
 async def on_my_command(message: types.Message):
     print(message.text)
 ```
+
+Your command in the help menu:
+
+![help_example.png](resources/images/help_example.png)
 
 ## Status
 
