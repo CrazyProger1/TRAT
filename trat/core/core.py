@@ -4,8 +4,12 @@ from aiogram.client.default import DefaultBotProperties
 from trat.core.config import (
     TOKEN,
     PARSE_MODE,
+    MODULES_DIRECTORY,
 )
 from trat.core.bot.handlers import routers
+from trat.utils.modules import (
+    ModuleManager,
+)
 
 
 async def run():
@@ -20,4 +24,7 @@ async def run():
 
     dispatcher.include_routers(*routers)
 
-    await dispatcher.start_polling(bot)
+    manager = ModuleManager()
+    manager.load_modules(MODULES_DIRECTORY)
+
+    await dispatcher.start_polling(bot, module_manager=manager)
