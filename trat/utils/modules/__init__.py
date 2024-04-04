@@ -7,9 +7,4 @@ from .modules import Module
 
 from .managers import ModuleManager
 
-__all__ = [
-    'BaseModule',
-    'BaseModuleManager',
-    'ModuleManager',
-    'Module'
-]
+__all__ = ["BaseModule", "BaseModuleManager", "ModuleManager", "Module"]

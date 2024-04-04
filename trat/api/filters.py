@@ -1,4 +1,1 @@
-from trat.core.bot.filters import (
-    AdminFilter,
-    CommandFilter,
-)
+from trat.core.filters import AdminFilter, CommandFilter

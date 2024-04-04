@@ -13,12 +13,12 @@ def import_module(path: str) -> ModuleType:
         if not os.path.exists(path):
             raise FileNotFoundError(f"Module file not found: {path}")
         *_, filename = os.path.split(path)
-        spec = importlib.util.spec_from_file_location(filename.replace('.py', ''), path)
+        spec = importlib.util.spec_from_file_location(filename.replace(".py", ""), path)
         imported_module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(imported_module)
 
         return imported_module
     except Exception as e:
-        raise ImportError(f'Failed to import module: {path}')
+        raise ImportError(f"Failed to import module: {path}")
     finally:
         sys.path.remove(directory)

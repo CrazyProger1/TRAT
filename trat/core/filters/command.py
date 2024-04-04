@@ -12,20 +12,26 @@ from trat.core.config import (
 
 class CommandFilter(filters.Filter):
     def __init__(
-            self,
-            *commands: str,
-            description: str,
-            prefix: str = COMMAND_PREFIX,
-            tag: str = None
+        self,
+        *commands: str,
+        description: str,
+        prefix: str = COMMAND_PREFIX,
+        arguments: Iterable[str] = (),
+        tag: str = None
     ):
         self._commands = set(commands)
+        self._arguments = arguments
         self._description = description
         self._prefix = prefix
         self._tag = tag
 
     @property
-    def commands(self) -> set[str]:
+    def commands(self) -> Iterable[str]:
         return self._commands
+
+    @property
+    def arguments(self) -> Iterable[str]:
+        return self._arguments
 
     @property
     def description(self) -> str:
@@ -36,7 +42,7 @@ class CommandFilter(filters.Filter):
         return self._prefix
 
     @property
-    def tag(self) -> Iterable[str]:
+    def tag(self) -> str | None:
         return self._tag
 
     async def __call__(self, *args) -> bool:

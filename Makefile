@@ -16,7 +16,9 @@ install:
 
 .PHONY: format
 format:
-	poetry run python -m black trat/__main__.py
+	poetry run python -m black trat
+	poetry run python -m black tests
+	poetry run python -m black resources
 
 .PHONY: test
 test:

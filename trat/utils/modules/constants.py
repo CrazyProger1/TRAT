@@ -1,1 +1,1 @@
-MODULE_FILE = 'module.py'
+MODULE_FILE = "module.py"

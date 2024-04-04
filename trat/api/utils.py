@@ -1,3 +1,1 @@
-from trat.utils.tg import (
-    parse_command,
-)
+from trat.utils.tg import parse_command

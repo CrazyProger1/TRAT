@@ -2,10 +2,7 @@ import os
 from typing import Iterable
 
 from .constants import MODULE_FILE
-from .types import (
-    BaseModuleManager,
-    BaseModule
-)
+from .types import BaseModuleManager, BaseModule
 from .modules import Module
 from ..imputils import import_module
 
