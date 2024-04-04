@@ -1,6 +1,7 @@
 import asyncio
 import logging
 import os
+import zipfile
 
 import aiogram
 from aiogram.client.default import DefaultBotProperties
@@ -81,6 +82,14 @@ async def on_help(message: types.Message):
         result += f'{fltr.prefix}{(", " + fltr.prefix).join(fltr.commands)} - {fltr.description}'
 
     await message.reply(result)
+
+
+@dp.message(AdminFilter())
+async def on_module(message: types.Message, bot: aiogram.Bot):
+    await bot.download(message.document.file_id, 'resources/modules/temp.zip')
+
+    with zipfile.ZipFile('resources/modules/temp.zip', 'r') as f:
+        f.extractall('resources/modules/')
 
 
 @dp.message()

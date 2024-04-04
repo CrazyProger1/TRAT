@@ -1,6 +1,6 @@
 .PHONY: build
 build:
-	poetry run pyinstaller -w -F --name TRAT trat/__main__.py --add-data ".env:."
+	poetry run pyinstaller -w -F --name TRAT -i resources/images/logo.ico trat/__main__.py --add-data ".env:."
 
 .PHONY: build-debug
 build-debug:
