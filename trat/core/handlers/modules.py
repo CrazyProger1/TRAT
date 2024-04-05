@@ -19,10 +19,10 @@ module_router = aiogram.Router(name="Module Router")
 
 @module_router.message(AdminFilter(), aiogram.F.document)
 async def on_file(
-        message: types.Message,
-        bot: aiogram.Bot,
-        module_manager: BaseModuleManager,
-        dispatcher: aiogram.Dispatcher,
+    message: types.Message,
+    bot: aiogram.Bot,
+    module_manager: BaseModuleManager,
+    dispatcher: aiogram.Dispatcher,
 ):
     try:
         module = await upload_module(

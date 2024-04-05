@@ -45,8 +45,8 @@ def unpack_module(module: str, destination: str):
 
 
 def load_module(
-        manager: BaseModuleManager,
-        module: str,
+    manager: BaseModuleManager,
+    module: str,
 ) -> BaseModule:
     try:
         return manager.load_module(module)
@@ -55,10 +55,10 @@ def load_module(
 
 
 async def upload_module(
-        bot: aiogram.Bot,
-        dispatcher: aiogram.Dispatcher,
-        document: types.Document,
-        manager: BaseModuleManager,
+    bot: aiogram.Bot,
+    dispatcher: aiogram.Dispatcher,
+    document: types.Document,
+    manager: BaseModuleManager,
 ) -> BaseModule:
     build_filestruct()
 
