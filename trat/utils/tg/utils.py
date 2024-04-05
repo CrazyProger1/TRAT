@@ -30,5 +30,4 @@ def validate_arguments(
             raise ValidationError(f"Missing argument: {arg}")
 
         if callable(validator):
-            if not validator(val):
-                raise ValidationError(f"Invalid argument value: {arg}")
+            validator(val)

@@ -19,6 +19,7 @@ def import_module(path: str) -> ModuleType:
 
         return imported_module
     except Exception as e:
+        print(e)
         raise ImportError(f"Failed to import module: {path}")
     finally:
         sys.path.remove(directory)
