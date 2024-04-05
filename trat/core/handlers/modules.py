@@ -35,14 +35,6 @@ async def try_unpack(file: str, destination: str) -> bool:
         return False
 
 
-async def try_load(manager: BaseModuleManager, module: str):
-    try:
-        manager.load_module(module)
-        return True
-    except ImportError:
-        return False
-
-
 @module_router.message(AdminFilter(), aiogram.F.document)
 async def on_file(
     message: types.Message,
@@ -79,17 +71,3 @@ async def on_file(
             await message.reply(Messages.ERROR_WHILE_UNPACKING)
     else:
         await message.reply(Messages.ERROR_WHILE_SAVING)
-
-
-@module_router.message(
-    AdminFilter(), CommandFilter("modules", description="show available modules")
-)
-async def on_modules(message: types.Message, module_manager: BaseModuleManager):
-    result = Messages.MODULES_MESSAGE
-
-    for module in module_manager.modules:
-        result += Messages.MODULE.format(
-            name=module.NAME, version=module.VERSION, description=module.DESCRIPTION
-        )
-
-    await message.reply(result)
