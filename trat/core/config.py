@@ -14,5 +14,6 @@ ADMIN = int(os.getenv("ADMIN"))
 PARSE_MODE = "html"
 COMMAND_PREFIX = "/"
 
+# Files
 RESOURCE_DIRECTORY = "resources"
 MODULES_DIRECTORY = os.path.join(RESOURCE_DIRECTORY, "modules")
