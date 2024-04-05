@@ -80,7 +80,7 @@ def get_size(path):
         "dir",
         "listdir",
         description="show directory content",
-        arguments=("?directory",),
+        arguments=("?dirpath",),
         tag=__name__,
     ),
 )
