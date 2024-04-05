@@ -134,7 +134,7 @@ Your command in the help menu:
 
 **Coming soon:**
 
-- [ ] Filesystem (extended)
+- [x] Filesystem
 - [ ] Encryption (files)
 - [ ] Camera (photo, video)
 - [ ] Screen (screenshots, video)
