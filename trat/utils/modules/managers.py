@@ -24,9 +24,13 @@ class ModuleManager(BaseModuleManager):
 
         return result
 
-    def load_module(self, directory: str, file: str = MODULE_FILE) -> BaseModule:
+    def load_module(self, path: str, file: str = MODULE_FILE) -> BaseModule:
+        if os.path.isdir(path):
+            fullpath = os.path.join(path, file)
+        else:
+            fullpath = path
 
-        py_mod = import_module(os.path.join(directory, file))
+        py_mod = import_module(fullpath)
 
         mod = Module(py_module=py_mod)
 

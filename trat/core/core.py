@@ -1,5 +1,5 @@
 from trat.core.config import MODULES_DIRECTORY
-from trat.core.utils import build_filestruct
+from trat.core.module import build_filestruct, include_module_routers
 
 from trat.utils.modules import ModuleManager
 
@@ -13,7 +13,6 @@ from trat.core.config import (
 )
 from trat.core.handlers import routers
 from trat.core.enums import Messages
-from trat.core.utils import include_module_routers
 
 
 async def run():

@@ -2,13 +2,10 @@ from i18n import TranslatableEnum
 
 
 class Messages(TranslatableEnum):
-    ERROR_WHILE_SAVING = "Error while saving module"
-    ERROR_WHILE_UNPACKING = "Error while unpacking module"
-    ERROR_WHILE_LOADING = "Error while loading module: {error}"
+    ERROR_WHILE_SAVING = "Error occurred while saving module: {error}"
+    ERROR_WHILE_UNPACKING = "Error occurred while unpacking module: {error}"
+    ERROR_WHILE_LOADING = "Error occurred while loading module: {error}"
     MODULE_SUCCESSFULLY_INSTALLED = "Module <b>{name}</b> successfully installed"
-    MODULE_SUCCESSFULLY_UPDATED = (
-        "Module <b>{name}</b> successfully updated to version <b>{version}</b>"
-    )
     WELCOME_MESSAGE = (
         "<b>{app} - V{version}</b>\n\n{app} is a powerful cross-platform RAT "
         "based on Telegram bot protocol 🤖.\nSend <b>/help</b> to see more."
@@ -19,3 +16,4 @@ class Messages(TranslatableEnum):
     COMMAND = "<b>/{commands} {arguments}</b> - {description}\n"
     MODULE = "<b>{name} (v{version})</b> - {description}\n"
     BOT_ONLINE = "Bot online 🤖"
+    UNEXPECTED_ERROR_OCCURRED = "Unexpected error occurred: {error}"
